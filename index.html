@@ -22,13 +22,13 @@
       </div>
     </div>
     <div class="header__nav">
-      <nav>
+      <div class="nav">
         <ul>
           <li><a href="#">Cadastro de transações</a></li>
          <hr>
           <li><a href="#">Limpar dados</a></li>
         </ul>
-      </nav>
+      </div>
       <div class="nav__collapse">
         <div></div>
         <div></div>
@@ -36,6 +36,56 @@
       </div>
     </div>
    </header>
+   <section>
+   <form>
+    <h1>Nova transação</h1>
+    <div>Tipo de transação</div>
+    <select name="select">
+      <option value="">Compra</option>
+      <option value="">Venda</option>
+    </select>
+    <div>Nome da mercadoria</div>
+    <input type="text" placeholder="Input">
+    <div>Nome da mercadoria</div>
+    <input type="text" placeholder="R$ 0,00" >
+    <button type="submit">Adicionar Transação</button>
+   </form>
+   <div class="extract">
+    <h1>Extratos de transações</h1>
+
+    <div class="table">
+      <div class="table__box1">
+        <div></div>
+        <div>Mercadoria</div>
+        <div>Valor</div>
+      </div>
+      <div class="table__box2">
+        <div>+</div>
+        <div>Lorem ipsum dolor sit amet consectetur</div>
+        <div>R$ 12.999,99</div>
+      </div>
+      <div class="table__box2">
+        <div>-</div>
+        <div>Quis nostrud exercitation</div>
+        <div>R$ 99,99</div>
+      </div>
+      <div class="table__box2">
+        <div>+</div>
+        <div>Lorem ipsum</div>
+        <div>R$  9,99</div>
+      </div>
+      <div class="table__box3">
+        <div></div>
+        <div>Total</div>
+        <div class="box box2">R$ R$ 12.909,99</div>
+      </div>
+      <div class="table__box4">
+        (Lucro)
+      </div>
+       
+   </div>
+   </div>
+   </section>
   </div>
 </body>
 </html>
