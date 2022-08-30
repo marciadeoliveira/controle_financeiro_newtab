@@ -18,7 +18,7 @@
         <img src="assets/logo.svg" alt="logo">
       </div>
       <div class="logo__title">
-        <h2>Controle financeiro</p>
+        <h2>Controle financeiro</h2>
       </div>
     </div>
     <div class="header__nav">
@@ -36,23 +36,33 @@
       </div>
     </div>
    </header>
+
    <section>
    <form>
-    <h1>Nova transação</h1>
-    <div>Tipo de transação</div>
-    <select name="select">
-      <option value="">Compra</option>
-      <option value="">Venda</option>
-    </select>
-    <div>Nome da mercadoria</div>
-    <input type="text" placeholder="Input">
-    <div>Nome da mercadoria</div>
-    <input type="text" placeholder="R$ 0,00" >
-    <button type="submit">Adicionar Transação</button>
+    <div><h1>Nova transação</h1></div>
+    <div class="form__table">  
+      <div>
+        <div>Tipo de transação</div>
+        <select name="select">
+          <option value="">Compra</option>
+          <option value="">Venda</option>
+        </select>
+      </div>
+      <div>
+        <div>Nome da mercadoria</div>
+        <input class="input1" type="text" placeholder="Input">
+      </div>
+      <div>
+        <div>Valor</div>
+        <input class="input2" type="text" placeholder="R$ 0,00" >
+      </div>
+    </div>
+    <div class="button">
+      <button type="submit">Adicionar Transação</button>
+    </div>
    </form>
    <div class="extract">
     <h1>Extratos de transações</h1>
-
     <div class="table">
       <div class="table__box1">
         <div></div>
@@ -82,7 +92,6 @@
       <div class="table__box4">
         (Lucro)
       </div>
-       
    </div>
    </div>
    </section>

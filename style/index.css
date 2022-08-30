@@ -72,7 +72,6 @@ a{
   font-weight: 600;
   font-size: 16px;
   line-height: 19px;
-
 }
 section{
   width: 1112px;
@@ -132,7 +131,6 @@ button{
   background: var(--color-font);
   border-radius: 4px;
   color: var(--background-menu);
-
 }
 .extract{
   width: 680px;
@@ -166,13 +164,112 @@ button{
   display: grid;
   grid-template-columns: 525px;
   text-align: end;
-  border-bottom: 1px solid #979797;
   margin-top: -20px;
-
 }
 
 
+/*tablet landscape*/
+@media screen and (max-width:1112px) {
+  .container{
+    width: 1112px;
+  } 
+  header{
+    width:1112px;
+    justify-content: space-between;
+    padding-right: 20px;
+  }
+  .header__logo{
+    padding-left: 20px;
+  }
+  section{
+    justify-content: space-around;
+  }
+  .extract{
+    width: 652x;
+  }
+  .table {
+    display: grid;
+    grid-template-columns: 652px;
+    margin: 20px;
+  }
+}
 
-footer{
-  background-color: brown;
+
+/*tablet portrait*/
+@media screen and (max-width:768px) {
+  .container{
+    width: 768px;
+  } 
+  header{
+    width:768px;
+    justify-content: space-between;
+    padding-right: 20px;
+  }
+  .header__logo{
+    padding-left: 20px;
+    justify-content: space-between;
+  }
+  .nav{
+    display: none;
+  }
+  .header__nav{
+    width: 5%;
+    background: var(--background-top);
+    align-items: center;
+    justify-content: center;
+  }
+  .nav__collapse{
+    display: flex;
+    flex-direction: column;
+  }
+  .nav__collapse > div{
+    width: 20px;
+    height: 1px;
+    right: 21px;
+    margin: 3px 0px;
+    background:var(--color-font);
+  }
+  section{
+    width: 768px;
+    flex-direction: column;
+    margin-top: 2%;
+    align-items: center;
+  }
+  form{
+    width: 748px;
+    height: 189px;
+    display: flex;
+  }
+  .form__table{
+    display: flex;
+  }
+  select{
+    width: 150px;
+    height: 34px;
+    margin-bottom: 0px;
+    margin-right: 20px;
+  }
+  .input1{
+    width: 348px;
+    margin-right: 20px;
+  }
+  .input2{
+    width: 150px;
+  }
+  .button{
+    display: flex;
+    width: 95%;
+    justify-content: end;
+  }
+  button{
+    width:200px;
+  }
+  .extract{
+    width: 758px;
+  }
+  .table {
+    display: grid;
+    grid-template-columns: 728px;
+    margin: 20px;
+  }
 }
