@@ -272,8 +272,12 @@ button{
 }
 /*smartphone*/
 @media screen and (max-width:411px){
-  header{
+  .container{
     width: 411px;
+    width: 411px;
+  }
+  header{
+    width: 400px;
     height: 60px;
   }
   .header__logo{
@@ -297,7 +301,6 @@ button{
     width: 100%;
     flex-direction: column;
   }
- 
   select{
     width: 100%;
     margin-bottom: 20px;
@@ -310,9 +313,31 @@ button{
   }
   .button{
     width: 100%;
-    justify-content: center;  }
+    justify-content: center; 
   }
   button{
     width: 100%;
   }
+  .extract{
+    width: 411px;
+  }
+  .table {
+    display: grid;
+    grid-template-columns: 371px;
+    margin: 20px;
+  }
+  .table__box1{
+    grid-template-columns: 9px 231px 98px;
+  }
+  .table__box2{
+    grid-template-columns: 9px 231px 98px;
+  }
+  .table__box3{
+    grid-template-columns: 9px 231px 98px;;
+    margin-top: 1px;
+  }
+  .table__box4{
+    grid-template-columns: 280px;
+  }
+}
 
