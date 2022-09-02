@@ -27,7 +27,7 @@
             <li>
               <a href="#">Cadastro de transações</a>
             </li>
-           <hr>
+            <li class="nav__space"></li>
             <li>
               <a href="#">Limpar dados</a></li>
           </ul>
@@ -43,24 +43,24 @@
       <form>
         <div><h1>Nova transação</h1></div>
         <div class="form__table">  
-          <div>
+          <div class="table__select">
             <div>Tipo de transação</div>
             <select name="select">
               <option value="">Compra</option>
               <option value="">Venda</option>
             </select>
           </div>
-          <div>
+          <div class="table__input">
             <div>Nome da mercadoria</div>
-            <input class="input1" type="text" placeholder="Input">
+            <input type="text" placeholder="Input">
           </div>
-          <div>
+          <div class="table__input">
             <div>Valor</div>
-            <input class="input2" type="text" placeholder="R$ 0,00" >
+            <input type="text" placeholder="R$ 0,00" >
           </div>
         </div>
         <div class="button">
-          <button type="submit">Adicionar Transação</button>
+          <button>Adicionar Transação</button>
         </div>
       </form>
       <div class="extract">
@@ -69,30 +69,30 @@
           <div class="table__box1">
             <div></div>
             <div>Mercadoria</div>
-            <div>Valor</div>
+            <div class="box__value">Valor</div>
           </div>
           <div class="table__box2">
             <div>+</div>
             <div>Lorem ipsum dolor sit amet consectetur</div>
-            <div>R$ 12.999,99</div>
+            <div class="box__value">R$ 12.999,99</div>
           </div>
           <div class="table__box2">
             <div>-</div>
             <div>Quis nostrud exercitation</div>
-            <div>R$ 99,99</div>
+            <div class="box__value">R$ 99,99</div>
           </div>
           <div class="table__box2">
             <div>+</div>
             <div>Lorem ipsum</div>
-            <div>R$  9,99</div>
+            <div class="box__value">R$  9,99</div>
           </div>
           <div class="table__box3">
             <div></div>
             <div>Total</div>
-            <div class="box box2">R$ 12.909,99</div>
+            <div class="box__value">R$ 12.909,99</div>
           </div>
           <div class="table__box4">
-            (Lucro)
+            [Lucro]
           </div>
         </div>
       </div>
