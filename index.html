@@ -5,10 +5,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Newtab_project</title>
-  <link rel="stylesheet" href="./style/index.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style/index.css">
 </head>
 <body>
   <div class="container">
@@ -25,10 +25,11 @@
       <div class="header__nav">
         <div class="nav">
           <ul>
+              <li class="nav__close">x</li>
             <li>
               <a href="#">Cadastro de transações</a>
             </li>
-            <li class="nav__space"></li>
+            <li class="nav__space">|</li>
             <li>
               <a href="#">Limpar dados</a></li>
           </ul>
@@ -46,19 +47,19 @@
         <div><h1>Nova transação</h1></div>
         <div class="form__table">  
           <div class="table__select">
-            <div>Tipo de transação</div>
-            <select name="select">
+            <label for="transaction_type">Tipo de transação</label>
+            <select id="transaction_type" name="select">
               <option value="">Compra</option>
               <option value="">Venda</option>
             </select>
           </div>
           <div class="table__input1">
-            <div>Nome da mercadoria</div>
-            <input type="text" placeholder="Input">
+            <label for="merchandise">Nome da mercadoria</label>
+            <input id="merchandise"type="text" placeholder="Input">
           </div>
           <div class="table__input2">
-            <div>Valor</div>
-            <input type="text" placeholder="R$ 0,00" >
+            <label for="merchandise_value">Valor</label>
+            <input id="merchandise_value"type="text" placeholder="R$ 0,00" >
           </div>
         </div>
         <div class="button">
