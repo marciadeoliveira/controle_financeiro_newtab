@@ -12,26 +12,26 @@
 </head>
 <body>
   <div class="container">
-    <div class="top">
-    <header>
+    <div class="container__top">
+    <header class="container__header">
       <div class="header__logo">
         <div class="logo__image">
-          <img src="assets/logo.svg" alt="logo">
+          <img class="image"src="assets/logo.svg" alt="logo">
         </div>
         <div class="logo__title">
-          <h2>Controle financeiro</h2>
+          <h2 class="title">Controle financeiro</h2>
         </div>
       </div>
       <div class="header__nav">
         <div class="nav">
-          <ul>
-              <li class="nav__close">x</li>
-            <li>
-              <a href="#">Cadastro de transações</a>
+          <ul class="nav__menu">
+              <li class="nav__list nav__close">x</li>
+            <li class="nav__list">
+              <a class="nav__link" href="#">Cadastro de transações</a>
             </li>
-            <li class="nav__space">|</li>
-            <li>
-              <a href="#">Limpar dados</a></li>
+            <li class="nav__list nav__space">|</li>
+            <li class="nav__list">
+              <a class="nav__link" href="#">Limpar dados</a></li>
           </ul>
         </div>
         <div class="nav__collapse">
@@ -42,59 +42,59 @@
       </div>
     </header>
   </div>
-    <section>
-      <form>
-        <div><h1>Nova transação</h1></div>
-        <div class="form__table">  
-          <div class="table__select">
+    <section class="section__form">
+      <form class="form">
+        <div><h1 class="form__title">Nova transação</h1></div>
+        <div class="form__transaction">  
+          <div class="transaction__select">
             <label for="transaction_type">Tipo de transação</label>
-            <select id="transaction_type" name="select">
+            <select class="select__type" id="transaction_type" name="select">
               <option value="">Compra</option>
               <option value="">Venda</option>
             </select>
           </div>
-          <div class="table__input1">
+          <div class="form__merchandise">
             <label for="merchandise">Nome da mercadoria</label>
-            <input id="merchandise"type="text" placeholder="Input">
+            <input class="merchandise__type" id="merchandise"type="text" placeholder="Input">
           </div>
-          <div class="table__input2">
+          <div class="form__value">
             <label for="merchandise_value">Valor</label>
-            <input id="merchandise_value"type="text" placeholder="R$ 0,00" >
+            <input class="merchandise__type" id="merchandise_value"type="text" placeholder="R$ 0,00" >
           </div>
         </div>
-        <div class="button">
-          <button>Adicionar Transação</button>
+        <div class="form__button">
+          <button class="button__add">Adicionar Transação</button>
         </div>
       </form>
       <div class="extract">
-        <h1>Extratos de transações</h1>
-        <div class="table">
-          <div class="table__box1">
+        <h1 class="extract__title">Extratos de transações</h1>
+        <div class="extract__table">
+          <div class="table__header">
             <div></div>
             <div>Mercadoria</div>
-            <div class="box__value">Valor</div>
+            <div class="header__value">Valor</div>
           </div>
-          <div class="table__box2">
+          <div class="table__merchandise">
             <div>+</div>
             <div>Lorem ipsum dolor sit amet consectetur</div>
-            <div class="box__value">R$ 12.999,99</div>
+            <div class="header__value">R$ 12.999,99</div>
           </div>
-          <div class="table__box2">
+          <div class="table__merchandise">
             <div>-</div>
             <div>Quis nostrud exercitation</div>
-            <div class="box__value">R$ 99,99</div>
+            <div class="header__value">R$ 99,99</div>
           </div>
-          <div class="table__box2">
+          <div class="table__merchandise">
             <div>+</div>
             <div>Lorem ipsum</div>
-            <div class="box__value">R$  9,99</div>
+            <div class="header__value">R$  9,99</div>
           </div>
-          <div class="table__box3">
+          <div class="table__footer">
             <div></div>
             <div>Total</div>
-            <div class="box__value">R$ 12.909,99</div>
+            <div class="header__value">R$ 12.909,99</div>
           </div>
-          <div class="table__box4">
+          <div class="table__result">
             [Lucro]
           </div>
         </div>
