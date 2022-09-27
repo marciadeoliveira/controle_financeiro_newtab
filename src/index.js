@@ -16,7 +16,7 @@ const createExtract =(transaction_type, merchandise__type, merchandise__value) =
     <div>${merchandise__type}</div>
     <div class="header__value">${merchandise__value}</div>
    `
-   document.querySelector('#nada').appendChild(item)
+   document.querySelector('#table__section').appendChild(item)
 }
 
 // Mascara para validar o input de valor, restringindo o uso de letras e adicionando casas decimais
@@ -34,7 +34,7 @@ document.querySelector('#merchandise__value').addEventListener('keyup', validNam
 
 // para não repetir os mesmos valores quando atualizar a página
 const clearExtract = () => {
-  const clear = document.querySelector('#nada')
+  const clear = document.querySelector('#table__section')
   while(clear.firstChild) {
     clear.removeChild(clear.lastChild)
   }
@@ -51,7 +51,15 @@ const renderBalance = (result) => {
     balance = 'Prejuízo' 
   }
   document.querySelector('#table__result').innerHTML = '['+ balance +']'
+  
 } 
+// limpar os campos dos inputs após clicar no botão adicionar Transação
+const clearFields = () => {
+  document.querySelector('#transaction_type').value = ''
+  document.querySelector('#merchandise__value').value = ''
+  document.querySelector('#merchandise__type').value= ''
+}
+
 // Renderizar os reslutados de soma e subtração, chegando ao valor total do extrato
 const renderResult = () => {
   const sum = sale.reduce((previousValue, currentValue) => previousValue + currentValue,0)
@@ -59,6 +67,7 @@ const renderResult = () => {
   result = sum - sub
   document.querySelector('#header__value').innerHTML = 'R$'+ result
   renderBalance(result)
+  clearFields()
 }
 
 // Renderizar o extrato, gerando tantos quantos elementos(div), estiverem dentro da const Extratotiverem
@@ -71,6 +80,9 @@ const renderExtract = () => {
 // Cadastrar os dados colhidos nos inputs 
 const addTransaction = ( e ) => {
   e.preventDefault()
+  if(!merchandise__type.value || !merchandise__value.value || !transaction_type ){
+    alert('Preencha os campos corretamente')
+  }
   if(transaction_type.value === "+") {
     sale.push((+merchandise__value.value))
   } else{

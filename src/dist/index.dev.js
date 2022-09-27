@@ -14,7 +14,7 @@ var createExtract = function createExtract(transaction_type, merchandise__type, 
   var item = document.createElement('div');
   item.classList.add('table__merchandise');
   item.innerHTML = "\n    <div id=\"table__merchandise__operador\">".concat(transaction_type, "</div>\n    <div>").concat(merchandise__type, "</div>\n    <div class=\"header__value\">").concat(merchandise__value, "</div>\n   ");
-  document.querySelector('#nada').appendChild(item);
+  document.querySelector('#table__section').appendChild(item);
 }; // Mascara para validar o input de valor, restringindo o uso de letras e adicionando casas decimais
 
 
@@ -33,7 +33,7 @@ var validNamber = function validNamber(e) {
 document.querySelector('#merchandise__value').addEventListener('keyup', validNamber, false); // para não repetir os mesmos valores quando atualizar a página
 
 var clearExtract = function clearExtract() {
-  var clear = document.querySelector('#nada');
+  var clear = document.querySelector('#table__section');
 
   while (clear.firstChild) {
     clear.removeChild(clear.lastChild);
@@ -57,6 +57,13 @@ var renderBalance = function renderBalance(result) {
   }
 
   document.querySelector('#table__result').innerHTML = '[' + balance + ']';
+}; // limpar os campos dos inputs após clicar no botão adicionar Transação
+
+
+var clearFields = function clearFields() {
+  document.querySelector('#transaction_type').value = '';
+  document.querySelector('#merchandise__value').value = '';
+  document.querySelector('#merchandise__type').value = '';
 }; // Renderizar os reslutados de soma e subtração, chegando ao valor total do extrato
 
 
@@ -70,6 +77,7 @@ var renderResult = function renderResult() {
   result = sum - sub;
   document.querySelector('#header__value').innerHTML = 'R$' + result;
   renderBalance(result);
+  clearFields();
 }; // Renderizar o extrato, gerando tantos quantos elementos(div), estiverem dentro da const Extratotiverem
 
 
@@ -84,6 +92,10 @@ var renderExtract = function renderExtract() {
 
 var addTransaction = function addTransaction(e) {
   e.preventDefault();
+
+  if (!merchandise__type.value || !merchandise__value.value || !transaction_type) {
+    alert('Preencha os campos corretamente');
+  }
 
   if (transaction_type.value === "+") {
     sale.push(+merchandise__value.value);
