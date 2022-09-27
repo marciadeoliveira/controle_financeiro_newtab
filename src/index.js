@@ -14,7 +14,7 @@ const createExtract =(transaction_type, merchandise__type, merchandise__value) =
   item.innerHTML =`
     <div id="table__merchandise__operador">${transaction_type}</div>
     <div>${merchandise__type}</div>
-    <div class="header__value">${merchandise__value}</div>
+    <div class="header__value" id="header__value">${merchandise__value}</div>
    `
    document.querySelector('#table__section').appendChild(item)
 }
@@ -40,7 +40,7 @@ const clearExtract = () => {
   }
 }
 
-// Renderiza se o financeiro gerou Lucro ou Prejuízo
+ //Renderiza se o financeiro gerou Lucro ou Prejuízo
 const renderBalance = (result) => {
   var balance =''
   if( result === 0 ){
@@ -51,23 +51,25 @@ const renderBalance = (result) => {
     balance = 'Prejuízo' 
   }
   document.querySelector('#table__result').innerHTML = '['+ balance +']'
-  
 } 
-// limpar os campos dos inputs após clicar no botão adicionar Transação
-const clearFields = () => {
-  document.querySelector('#transaction_type').value = ''
-  document.querySelector('#merchandise__value').value = ''
-  document.querySelector('#merchandise__type').value= ''
-}
 
 // Renderizar os reslutados de soma e subtração, chegando ao valor total do extrato
 const renderResult = () => {
   const sum = sale.reduce((previousValue, currentValue) => previousValue + currentValue,0)
   const sub = buy.reduce((previousValue, currentValue) => previousValue + currentValue,0)
-  result = sum - sub
-  document.querySelector('#header__value').innerHTML = 'R$'+ result
+  result = sum -sub 
+  document.querySelector('#footer__value').innerHTML = 'R$'+result
+ //Chamar a função que vai atualizar o resultado
   renderBalance(result)
+//salvar os dados do extrato em localstorage
   clearFields()
+}
+
+ //limpar os campos dos inputs após clicar no botão adicionar Transação
+const clearFields = () => {
+  document.querySelector('#transaction_type').value = ''
+  document.querySelector('#merchandise__value').value = ''
+  document.querySelector('#merchandise__type').value= ''
 }
 
 // Renderizar o extrato, gerando tantos quantos elementos(div), estiverem dentro da const Extratotiverem
@@ -80,7 +82,7 @@ const renderExtract = () => {
 // Cadastrar os dados colhidos nos inputs 
 const addTransaction = ( e ) => {
   e.preventDefault()
-  if(!merchandise__type.value || !merchandise__value.value || !transaction_type ){
+    if(!merchandise__type.value || !merchandise__value.value || !transaction_type ){
     alert('Preencha os campos corretamente')
   }
   if(transaction_type.value === "+") {
@@ -95,10 +97,10 @@ const addTransaction = ( e ) => {
       price: merchandise__value.value
     }
   )
+  document.querySelector('#table__messagem').style.display= 'none'
   renderExtract()
 }
 document.querySelector('#add_transaction').addEventListener('click',addTransaction, false)
-
 renderExtract()
 
 

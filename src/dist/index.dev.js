@@ -13,7 +13,7 @@ var createExtract = function createExtract(transaction_type, merchandise__type, 
      e por fim criar os elementos.*/
   var item = document.createElement('div');
   item.classList.add('table__merchandise');
-  item.innerHTML = "\n    <div id=\"table__merchandise__operador\">".concat(transaction_type, "</div>\n    <div>").concat(merchandise__type, "</div>\n    <div class=\"header__value\">").concat(merchandise__value, "</div>\n   ");
+  item.innerHTML = "\n    <div id=\"table__merchandise__operador\">".concat(transaction_type, "</div>\n    <div>").concat(merchandise__type, "</div>\n    <div class=\"header__value\" id=\"header__value\">").concat(merchandise__value, "</div>\n   ");
   document.querySelector('#table__section').appendChild(item);
 }; // Mascara para validar o input de valor, restringindo o uso de letras e adicionando casas decimais
 
@@ -38,7 +38,7 @@ var clearExtract = function clearExtract() {
   while (clear.firstChild) {
     clear.removeChild(clear.lastChild);
   }
-}; // Renderiza se o financeiro gerou Lucro ou Prejuízo
+}; //Renderiza se o financeiro gerou Lucro ou Prejuízo
 
 
 var renderBalance = function renderBalance(result) {
@@ -57,13 +57,6 @@ var renderBalance = function renderBalance(result) {
   }
 
   document.querySelector('#table__result').innerHTML = '[' + balance + ']';
-}; // limpar os campos dos inputs após clicar no botão adicionar Transação
-
-
-var clearFields = function clearFields() {
-  document.querySelector('#transaction_type').value = '';
-  document.querySelector('#merchandise__value').value = '';
-  document.querySelector('#merchandise__type').value = '';
 }; // Renderizar os reslutados de soma e subtração, chegando ao valor total do extrato
 
 
@@ -75,9 +68,18 @@ var renderResult = function renderResult() {
     return previousValue + currentValue;
   }, 0);
   result = sum - sub;
-  document.querySelector('#header__value').innerHTML = 'R$' + result;
-  renderBalance(result);
+  document.querySelector('#footer__value').innerHTML = 'R$' + result; //Chamar a função que vai atualizar o resultado
+
+  renderBalance(result); //salvar os dados do extrato em localstorage
+
   clearFields();
+}; //limpar os campos dos inputs após clicar no botão adicionar Transação
+
+
+var clearFields = function clearFields() {
+  document.querySelector('#transaction_type').value = '';
+  document.querySelector('#merchandise__value').value = '';
+  document.querySelector('#merchandise__type').value = '';
 }; // Renderizar o extrato, gerando tantos quantos elementos(div), estiverem dentro da const Extratotiverem
 
 
@@ -108,6 +110,7 @@ var addTransaction = function addTransaction(e) {
     merchandise: merchandise__type.value,
     price: merchandise__value.value
   });
+  document.querySelector('#table__messagem').style.display = 'none';
   renderExtract();
 };
 
