@@ -190,9 +190,12 @@ form p{
   grid-template-columns: 5% 70% 22%;
   border-bottom: 1px solid #979797;
 }
-.table__messagem{
+.table__message{
+  display: flex;
   width: 100%;
-  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 40px;
   background-color: var(--background-top);
 }
 .table__footer{
