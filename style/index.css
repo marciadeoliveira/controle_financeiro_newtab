@@ -296,6 +296,7 @@ form p{
     color: white;
     font-weight: bold;
     justify-content: left;
+    cursor: pointer;
   }
   .nav__link{
     color: white ;

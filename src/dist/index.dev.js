@@ -135,5 +135,31 @@ var uploadDatas = function uploadDatas() {
     });
   }
 };
+/*limpar todos os dados ao clicar no campo limpar dados, 
+  exibir mensagem de confirmação e recarregar a pagina*/
 
-uploadDatas();
+
+var clearData = function clearData() {
+  if (window.confirm("Você realmente deseja limpar todos os dados?")) {
+    localStorage.clear('extract', extract);
+    localStorage.clear('extract', result);
+    localStorage.clear('extract', balance);
+    location.reload();
+  }
+};
+
+document.querySelector('#nav__link').addEventListener('click', clearData, false); // Fechar a aba menu
+
+var closeMenu = function closeMenu() {
+  document.querySelector('#nav__menu').style.display = 'none';
+  location.reload();
+};
+
+document.querySelector('#nave__close').addEventListener('click', closeMenu, false);
+uploadDatas(); //Abrir a aba Menu
+
+var openMenu = function openMenu() {
+  document.querySelector('#nav__menu').style.display = 'flex';
+};
+
+document.querySelector('#nav__collapse').addEventListener('click', openMenu, false);

@@ -10,7 +10,6 @@ localStorage.getItem('extract') != null
 ? extract = JSON.parse(localStorage.getItem('extract'))
 :''
 
-
 /*criar o elemento div, adicionar uma classe à ele, 
 criar o que será mostrado no html e por fim criar os elementos.*/
 const createExtract = (
@@ -151,4 +150,32 @@ const uploadDatas = () =>{
     })
  }
 }
+/*limpar todos os dados ao clicar no campo limpar dados, 
+  exibir mensagem de confirmação e recarregar a pagina*/
+const clearData = () => {
+  if(window.confirm("Você realmente deseja limpar todos os dados?")) {
+    localStorage.clear('extract', extract)
+    localStorage.clear('extract', result)
+    localStorage.clear('extract', balance)
+    location. reload() 
+  }
+}
+document.querySelector('#nav__link')
+.addEventListener('click', clearData, false)
+
+// Fechar a aba menu
+const closeMenu= () => {
+  document.querySelector('#nav__menu').style.display = 'none'
+  location. reload() 
+}
+document.querySelector('#nave__close')
+.addEventListener('click', closeMenu, false)
 uploadDatas()
+
+//Abrir a aba Menu
+const openMenu = () => {
+  document.querySelector('#nav__menu').style.display = 'flex'
+}  
+document.querySelector('#nav__collapse')
+.addEventListener('click', openMenu, false)
+
