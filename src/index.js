@@ -98,20 +98,16 @@ const addTransaction = (e) => {
   )
   if(transaction_type.value === "+") {
     result += parseFloat(merchandise__value.value.toLocaleString().replace(",", "."))
-
   } else{
     result -= parseFloat(merchandise__value.value.toLocaleString().replace(",", "."))
   }
-
   document.querySelector('#footer__value').innerHTML = 'R$'+ result.toLocaleString().replace('.', ',')
   localStorage.setItem('result',JSON.stringify(result))
   localStorage.setItem('extract',JSON.stringify(extract))
   
     renderExtract()
 }
-document.querySelector('#add_transaction')
-.addEventListener('click',addTransaction,false)
-
+document.querySelector('#add_transaction').addEventListener('click',addTransaction,false)
 
 /*limpar todos os dados ao clicar no campo limpar dados, 
  exibir mensagem de confirmação e recarregar a pagina*/
@@ -127,17 +123,17 @@ document.querySelector('#nav__link')
 // Fechar a aba menu
 const closeMenu= () => {
   document.querySelector('#nav__menu').style.display = 'none'
-  location. reload() 
+  document.querySelector('#nav').style.display = 'none'
+  location.reload() 
 }
-document.querySelector('#nave__close')
-.addEventListener('click', closeMenu, false)
+document.querySelector('#nave__close').addEventListener('click', closeMenu, false)
 
 //Abrir a aba Menu
 const openMenu = () => {
   document.querySelector('#nav__menu').style.display = 'flex'
+  document.querySelector('#nav').style.display = 'flex'
 }  
-document.querySelector('#nav__collapse')
-.addEventListener('click', openMenu, false)
+document.querySelector('#nav__collapse').addEventListener('click', openMenu, false)
 
 /*Verifica se o local storage tem dados para serem recarregados, quando 
 carregar a página*/

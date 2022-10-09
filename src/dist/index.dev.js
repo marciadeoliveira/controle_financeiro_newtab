@@ -107,6 +107,7 @@ document.querySelector('#nav__link').addEventListener('click', clearData, false)
 
 var closeMenu = function closeMenu() {
   document.querySelector('#nav__menu').style.display = 'none';
+  document.querySelector('#nav').style.display = 'none';
   location.reload();
 };
 
@@ -114,6 +115,7 @@ document.querySelector('#nave__close').addEventListener('click', closeMenu, fals
 
 var openMenu = function openMenu() {
   document.querySelector('#nav__menu').style.display = 'flex';
+  document.querySelector('#nav').style.display = 'flex';
 };
 
 document.querySelector('#nav__collapse').addEventListener('click', openMenu, false);

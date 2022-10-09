@@ -261,7 +261,7 @@ form p{
     background:var(--color-font);
   }
   .nav{
-    /*display: none;*/
+    display: none;
     position: fixed;
     width: 33%;
     top: 0;
