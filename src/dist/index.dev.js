@@ -4,8 +4,6 @@ var merchandise__value = document.querySelector('#merchandise__value');
 var transaction_type = document.querySelector('#transaction_type');
 var merchandise__type = document.querySelector('#merchandise__type');
 var extract = [];
-var sale;
-var buy;
 var balance;
 var result = 0; // pegar valores no localStorage
 
@@ -61,14 +59,8 @@ uso de letras e adicionando casas decimais*/
 
 var validNamber = function validNamber(e) {
   e.preventDefault();
-  merchandise__value.value = merchandise__value.value.replace(/[^0-9]+/g, '');
-
-  if (merchandise__value.value.length <= 2) {
-    merchandise__value.value = ('000' + merchandise__value.value).substring(-3);
-  }
-
-  merchandise__value.value = merchandise__value.value.replace(/([0-9]{2})$/g, ".$1");
-  merchandise__value.value = parseFloat(merchandise__value.value).toLocaleString();
+  merchandise__value.value = merchandise__value.value.toString().replace(/[\D]+/g, "");
+  merchandise__value.value = merchandise__value.value.toString().replace(/([0-9]{2})$/g, ",$1");
 };
 
 document.querySelector('#merchandise__value').addEventListener('keyup', validNamber, false);
@@ -76,23 +68,25 @@ document.querySelector('#merchandise__value').addEventListener('keyup', validNam
 
 var addTransaction = function addTransaction(e) {
   e.preventDefault();
-  if (!merchandise__type.value || !merchandise__value.value || !transaction_type.value) alert('Preencha os campos corretamente');
+
+  if (!merchandise__type.value || !merchandise__value.value || !transaction_type.value) {
+    alert('Preencha os campos corretamente');
+    return false;
+  }
+
   extract.push({
     type: transaction_type.value,
     merchandise: merchandise__type.value,
-    price: +merchandise__value.value
+    price: merchandise__value.value
   });
 
   if (transaction_type.value === "+") {
-    sale = +merchandise__value.value;
-    result += sale;
-    document.querySelector('#footer__value').innerHTML = 'R$' + result;
+    result += parseFloat(merchandise__value.value.toLocaleString().replace(",", "."));
   } else {
-    buy = +merchandise__value.value;
-    result -= buy;
-    document.querySelector('#footer__value').innerHTML = 'R$' + result;
+    result -= parseFloat(merchandise__value.value.toLocaleString().replace(",", "."));
   }
 
+  document.querySelector('#footer__value').innerHTML = 'R$' + result.toLocaleString().replace('.', ',');
   localStorage.setItem('result', JSON.stringify(result));
   localStorage.setItem('extract', JSON.stringify(extract));
   renderExtract();
@@ -105,7 +99,7 @@ document.querySelector('#add_transaction').addEventListener('click', addTransact
 var clearData = function clearData() {
   if (window.confirm("Você deseja limpar todos os dados?")) {
     localStorage.clear('extract', extract);
-    location.reload();
+    uploadDatas();
   }
 };
 

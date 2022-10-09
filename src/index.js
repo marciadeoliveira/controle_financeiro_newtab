@@ -2,8 +2,6 @@ const merchandise__value = document.querySelector('#merchandise__value')
 const transaction_type = document.querySelector('#transaction_type')
 const merchandise__type = document.querySelector('#merchandise__type')
 let extract = []
-let sale;
-let buy;
 let balance;
 let result= 0
 
@@ -31,7 +29,7 @@ const renderBalance = ( )=> {
   clearFields()
 } 
 
- /*criar o elemento div, adicionar uma classe à ele, 
+/*criar o elemento div, adicionar uma classe à ele, 
 criar o que será mostrado no html e por fim criar os elementos.*/
 const createExtract = (
   transaction_type, 
@@ -76,19 +74,10 @@ const clearExtract = () => {
 
 /*Mascara para validar o input de valor, restringindo o 
 uso de letras e adicionando casas decimais*/
-const validNamber = (e) => {
+const validNamber = (e) => {  
   e.preventDefault()
-  merchandise__value.value = merchandise__value.value
-  .replace(/[^0-9]+/g,'')
-
-  if(merchandise__value.value.length <= 2) {
-    merchandise__value.value = ('000'+merchandise__value.value)
-    .substring(-3)
-  }
-  merchandise__value.value = merchandise__value.value
-  .replace(/([0-9]{2})$/g,".$1")
-  merchandise__value.value = parseFloat(merchandise__value.value)
-  .toLocaleString()
+  merchandise__value.value = merchandise__value.value.toString().replace(/[\D]+/g, "")
+  merchandise__value.value = merchandise__value.value.toString().replace(/([0-9]{2})$/g, ",$1");
 }
 document.querySelector('#merchandise__value')
 .addEventListener('keyup',validNamber,false)
@@ -96,31 +85,29 @@ document.querySelector('#merchandise__value')
 /*Pegar os dados dos inputs adicionar nas variaveis e mandá-las para localStorage*/
 const addTransaction = (e) => {
   e.preventDefault()
-  if(
-    !merchandise__type.value 
-    || !merchandise__value.value 
-    || !transaction_type.value
-  ) 
-  alert('Preencha os campos corretamente')
+  if(!merchandise__type.value || !merchandise__value.value || !transaction_type.value) {
+    alert('Preencha os campos corretamente')
+    return false
+  }
   extract.push(
     { 
       type: transaction_type.value, 
       merchandise: merchandise__type.value,
-      price: +merchandise__value.value,
+      price: merchandise__value.value,
     }
   )
   if(transaction_type.value === "+") {
-    sale = +merchandise__value.value
-    result += sale
-    document.querySelector('#footer__value').innerHTML = 'R$'+ result 
+    result += parseFloat(merchandise__value.value.toLocaleString().replace(",", "."))
+
   } else{
-    buy = +merchandise__value.value
-    result -= buy
-    document.querySelector('#footer__value').innerHTML = 'R$'+ result 
+    result -= parseFloat(merchandise__value.value.toLocaleString().replace(",", "."))
   }
+
+  document.querySelector('#footer__value').innerHTML = 'R$'+ result.toLocaleString().replace('.', ',')
   localStorage.setItem('result',JSON.stringify(result))
   localStorage.setItem('extract',JSON.stringify(extract))
-  renderExtract()
+  
+    renderExtract()
 }
 document.querySelector('#add_transaction')
 .addEventListener('click',addTransaction,false)
@@ -131,7 +118,7 @@ document.querySelector('#add_transaction')
 const clearData = () => {
   if(window.confirm("Você deseja limpar todos os dados?")) {
     localStorage.clear('extract', extract)
-    location. reload() 
+    uploadDatas()
   }
 }
 document.querySelector('#nav__link')
